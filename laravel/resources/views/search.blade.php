@@ -10,7 +10,7 @@
         <input type="text" name="q" value="{{ $keyword }}">
         <button>Search</button>
     </form>
-    <h3>{{$keyword}}'s result</h3>
+    <h3>{{$keyword}}'s result:</h3>
     <div>
         ....
     </div>

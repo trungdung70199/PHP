@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,35 +15,45 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Make about page
-Route::get('/about', function () {
-    return view('about');
-});
 
-// Make items/xx page
-Route::get('/items', function() {
-    $message = "Product ID is {$id}";
-    return $message;
-});
+// /about でアクセスしたときのルーティング(GET)
+// Route::get('/about', function () {
+//     return view('about');
+// });
+// About page
+Route::get('/about', [HomeController::class, 'about']);
+// Search
+Route::get('search', [HomeController::class, 'search']);
+// item iD
+Route::get('/item/{id}', [HomeController::class, 'show']);
+// dp/item
+Route::get('dp/{id}', HomeController::class, 'show');
+// /item/xx でアクセスしたときのルーティング(GET)
+// Route::get('/item/{id}', function ($id) {
+//     $message = "Product ID is {$id}";
+//     return $message;
+// });
 
-// Amazon routing
-Route::get('/dp{id}', function ($id) {
-    $message = "Product ID is {$id}";
-    return $message;
-});
+// Amazonのようなアクセスしたときのルーティング(GET)
+// Route::get('/dp/{id}', function ($id) {
+//     $message = "Product ID is {$id}";
+//     return $message;
+// });
 
-// Google routing
-Route::get('/search', function(Request $request) {
-    //$message = "Search word is {$request->q}";
-    // Array data
-    $data = ['keyword' => $request->q];
-    //View data
-    return view('search', $data);
-});
+// Googleのようなアクセス（クエリーパラメータを利用）したときのルーティング(GET)
+// Route::get('/search', function (Request $request) {
+//     // $message = "Search word is {$request->q}";
+//     // Array data
+//     $data = [
+//         'keyword' => $request->q
+//     ];
+//     // View data
+//     return view('search', $data);
+// });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -54,4 +65,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
