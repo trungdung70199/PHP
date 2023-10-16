@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 // Make about page
 Route::get('/about', function () {
-    return "This is About Page.";
+    return view('about');
 });
 
 // Make items/xx page
@@ -33,8 +33,11 @@ Route::get('/dp{id}', function ($id) {
 
 // Google routing
 Route::get('/search', function(Request $request) {
-    $message = "Search word is {$request->q}";
-    return $message;
+    //$message = "Search word is {$request->q}";
+    // Array data
+    $data = ['keyword' => $request->q];
+    //View data
+    return view('search', $data);
 });
 
 Route::get('/', function () {
