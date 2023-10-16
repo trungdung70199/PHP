@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,12 @@ Route::get('/items', function() {
 // Amazon routing
 Route::get('/dp{id}', function ($id) {
     $message = "Product ID is {$id}";
+    return $message;
+});
+
+// Google routing
+Route::get('/search', function(Request $request) {
+    $message = "Search word is {$request->q}";
     return $message;
 });
 
