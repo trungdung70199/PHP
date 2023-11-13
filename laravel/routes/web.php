@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// /about でアクセスしたときのルーティング(GET)
+// /about routing(GET)
 // Route::get('/about', function () {
 //     return view('about');
 // });
@@ -28,19 +28,19 @@ Route::get('search', [HomeController::class, 'search']);
 Route::get('/item/{id}', [HomeController::class, 'show']);
 // dp/item
 Route::get('dp/{id}', HomeController::class, 'show');
-// /item/xx でアクセスしたときのルーティング(GET)
+// /item/xx access routing(GET)
 // Route::get('/item/{id}', function ($id) {
 //     $message = "Product ID is {$id}";
 //     return $message;
 // });
 
-// Amazonのようなアクセスしたときのルーティング(GET)
+// Amazon routing(GET)
 // Route::get('/dp/{id}', function ($id) {
 //     $message = "Product ID is {$id}";
 //     return $message;
 // });
 
-// Googleのようなアクセス（クエリーパラメータを利用）したときのルーティング(GET)
+// Google routing(GET)
 // Route::get('/search', function (Request $request) {
 //     // $message = "Search word is {$request->q}";
 //     // Array data
